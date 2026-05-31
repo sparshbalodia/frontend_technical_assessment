@@ -22,13 +22,13 @@ export const BaseNode = ({
   // when any field changes
   const handleFieldChange = (key, value) => {
     setFieldValues(prev => ({
-      ...prev,       // keep all existing values
-      [key]: value   // update just this one key
+      ...prev,             
+      [key]: value   
     }));
   };
 
   return (
-    <div style={{ width, height, border: '1px solid black' }}>
+    <div style={{ width, minHeight: height, border: '1px solid black' }}>
 
       {/* Titlebar */}
       <div>
@@ -43,7 +43,7 @@ export const BaseNode = ({
 
             {field.type === 'select' ? (
               <select
-                value={ fieldsValue[field.key] }
+                value={ fieldValues[field.key] }
                 onChange={ (e) => handleFieldChange(field.key, e.target.value) }
               >
                 {field.options.map(opt => (
@@ -53,7 +53,7 @@ export const BaseNode = ({
             ) : (
               <input
                 type="text"
-                value={ fieldValue[field.key] }
+                value={ fieldValues[field.key] }
                 onChange={ (e) => handleFieldChange(field.key, e.target.value) }
               />
             )}
